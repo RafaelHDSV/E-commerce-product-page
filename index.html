@@ -163,6 +163,71 @@
 				font-weight: 400;
 				color: var(--dark_grayish_blue);
 			}
+
+			.infos .price {
+				display: flex;
+				flex-direction: row;
+				gap: 1rem;
+			}
+
+			.infos .price .descont {
+				font-size: 12px;
+				font-weight: 700;
+				color: var(--orange);
+				background-color: var(--pale_orange);
+				border-radius: 0.3rem;
+				height: fit-content;
+				padding: 0.2rem 0.5rem;
+			}
+
+			.infos .price .value {
+				display: flex;
+				flex-direction: column;
+				gap: 0.5rem;
+			}
+
+			.infos .price .value span:nth-child(1) {
+				font-size: 25px;
+				font-weight: 700;
+				color: var(--very_dark_blue);
+			}
+
+			.infos .price .value span:nth-child(2) {
+				font-size: 13px;
+				font-weight: 700;
+				color: var(--grayish_blue);
+			}
+
+			.card {
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				align-items: center;
+				width: 100%;
+				gap: 0.5rem;
+				padding: 2rem 0;
+			}
+
+			.card button:nth-child(1) {
+				outline: 0;
+				border: none;
+				max-height: 2.5rem;
+				height: 100vh;
+				border-radius: 0.5rem;
+				width: 100%;
+				background-color: var(--light_grayish_blue);
+			}
+
+			.card button:nth-child(2) {
+				outline: 0;
+				border: none;
+				max-height: 2.5rem;
+				height: 100vh;
+				border-radius: 0.5rem;
+				width: 100%;
+				background-color: var(--orange);
+				color: var(--white);
+			}
 		</style>
 	</head>
 	<body>
@@ -213,10 +278,10 @@
 						<span>$250.00</span>
 					</div>
 
-					<span>50%</span>
+					<span class="descont">50%</span>
 				</div>
 
-				<div class="cart">
+				<div class="card">
 					<button>0</button>
 					<button>Add to cart</button>
 				</div>

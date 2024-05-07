@@ -65,6 +65,7 @@
 			nav .left_container h1 {
 				font-size: 27px;
 				font-weight: 700;
+				color: var(--very_dark_blue);
 			}
 
 			nav .left_container .options {
@@ -95,6 +96,73 @@
 				width: 100%;
 				object-fit: contain;
 			}
+
+			main {
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				align-items: center;
+				width: 100%;
+				padding: 6rem 3rem;
+				gap: 6rem;
+			}
+
+			.images {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				gap: 1.5rem;
+			}
+
+			.images .main_img {
+				border-radius: 1rem;
+				width: 25rem;
+			}
+
+			.images .thumbnails {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				align-items: center;
+				width: 100%;
+				gap: 1.5rem;
+			}
+
+			.images .thumbnails img {
+				border-radius: 1rem;
+				width: 5rem;
+			}
+
+			.infos {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: flex-start;
+				gap: 1rem;
+				height: 100%;
+				width: 100%;
+			}
+
+			.infos .company {
+				font-size: 11px;
+				font-weight: 700;
+				text-transform: uppercase;
+				color: var(--orange);
+			}
+
+			.infos h2 {
+				font-size: 32px;
+				font-weight: 700;
+				color: var(--very_dark_blue);
+			}
+
+			.infos p {
+				line-height: 1.5rem;
+				font-size: 13px;
+				font-weight: 400;
+				color: var(--dark_grayish_blue);
+			}
 		</style>
 	</head>
 	<body>
@@ -119,7 +187,7 @@
 
 		<main>
 			<div class="images">
-				<img src="images/image-product-1.jpg" alt="image-product-1.jpg" />
+				<img class="main_img" src="images/image-product-1.jpg" alt="image-product-1.jpg" />
 
 				<div class="thumbnails">
 					<img src="images/image-product-1-thumbnail.jpg" alt="image-product-1-thumbnail.jpg" />
@@ -130,13 +198,13 @@
 			</div>
 
 			<div class="infos">
-				<span>Sneaker Company</span>
+				<span class="company">Sneaker Company</span>
 
 				<h2>Fall Limited Edition Sneakers</h2>
 
 				<p>
-					These low-profile sneakers are your <br />perfect casual wear companion. Featuring a durable
-					rubber outer sole, they'll withstand everything the weather can offer.
+					These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber
+					outer sole, they'll withstand everything the weather can offer.
 				</p>
 
 				<div class="price">

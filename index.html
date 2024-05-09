@@ -207,6 +207,7 @@
 				width: 100%;
 				gap: 0.5rem;
 				padding: 2rem 0;
+				user-select: none;
 			}
 
 			.card .quant {
@@ -296,10 +297,22 @@
 				<img class="main_img" src="images/image-product-1.jpg" alt="image-product-1.jpg" />
 
 				<div class="thumbnails">
-					<img src="images/image-product-1-thumbnail.jpg" alt="image-product-1-thumbnail.jpg" />
-					<img src="images/image-product-2-thumbnail.jpg" alt="image-product-2-thumbnail.jpg" />
-					<img src="images/image-product-3-thumbnail.jpg" alt="image-product-3-thumbnail.jpg" />
-					<img src="images/image-product-4-thumbnail.jpg" alt="image-product-4-thumbnail.jpg" />
+					<img
+						class="thumbnails_img"
+						src="images/image-product-1-thumbnail.jpg"
+						alt="image-product-1-thumbnail.jpg" />
+					<img
+						class="thumbnails_img"
+						src="images/image-product-2-thumbnail.jpg"
+						alt="image-product-2-thumbnail.jpg" />
+					<img
+						class="thumbnails_img"
+						src="images/image-product-3-thumbnail.jpg"
+						alt="image-product-3-thumbnail.jpg" />
+					<img
+						class="thumbnails_img"
+						src="images/image-product-4-thumbnail.jpg"
+						alt="image-product-4-thumbnail.jpg" />
 				</div>
 			</div>
 
@@ -324,9 +337,9 @@
 
 				<div class="card">
 					<div class="quant">
-						<img src="images/icon-minus.svg" alt="icon-minus.svg" />
-						<input type="number" />
-						<img src="images/icon-plus.svg" alt="icon-plus.svg" />
+						<img id="minus" src="images/icon-minus.svg" alt="icon-minus.svg" />
+						<input id="num_card" type="number" />
+						<img id="plus" src="images/icon-plus.svg" alt="icon-plus.svg" />
 					</div>
 
 					<div class="add_cart">
@@ -343,7 +356,52 @@
 		</div> -->
 
 		<script>
-			// colocar 0 no input de número
+			// variaveis
+			mainImg = document.querySelector('.main_img');
+			thumbnailImg = document.querySelectorAll('.thumbnails_img');
+			quantCard = document.getElementById('num_card');
+			minus = document.getElementById('minus');
+			plus = document.getElementById('plus');
+
+			// iniciar input com zero
+			quantCard.value = 0;
+
+			// quando input entra em foco é retirado o zero padrão
+			quantCard.addEventListener('focus', () => {
+				if (quantCard.value == 0) {
+					quantCard.value = '';
+				}
+			});
+
+			// se for retirado o zero padrão e não for escrito nada e sair, o sistema volta o zero padrão
+			quantCard.addEventListener('focusout', () => {
+				if (quantCard.value == '') {
+					quantCard.value = 0;
+				}
+			});
+
+			// diminuir o número de produtos no carrinho pelo sinal de menos
+			minus.addEventListener('click', () => {
+				if (quantCard.value > 0) {
+					quantCard.value = parseInt(quantCard.value) - 1;
+				}
+			});
+
+			// aumentar o número de produtos no carrinho pelo sinal de mais
+			plus.addEventListener('click', () => {
+				if (quantCard.value < 50000) {
+					quantCard.value = parseInt(quantCard.value) + 1;
+				}
+			});
+
+			for (let i = 0; i < thumbnailImg.length; i++) {
+				if (mainImg.src.slice(57) == `${thumbnailImg[i].src.slice(57, 72)}.jpg`) {
+					thumbnailImg[i].style.border = '10px solid var(--orange)';
+					thumbnailImg[i].style.opacity = '.3';
+				}
+			}
+
+			setInterval(() => {}, 1000);
 		</script>
 	</body>
 </html>

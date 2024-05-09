@@ -198,6 +198,7 @@
 				color: var(--grayish_blue);
 			}
 
+			/* PAREI NESSA PARTE AQUI */
 			.card {
 				display: flex;
 				flex-direction: row;
@@ -208,25 +209,65 @@
 				padding: 2rem 0;
 			}
 
-			.card button:nth-child(1) {
-				outline: 0;
-				border: none;
+			.card .quant {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				align-items: center;
 				max-height: 2.5rem;
 				height: 100vh;
+				max-width: 10rem;
+				width: 100vw;
+				padding: 0 1rem;
 				border-radius: 0.5rem;
-				width: 100%;
 				background-color: var(--light_grayish_blue);
 			}
 
-			.card button:nth-child(2) {
+			.card .quant input {
 				outline: 0;
 				border: none;
+				text-align: center;
+				background-color: var(--light_grayish_blue);
+				font-size: 14px;
+				font-weight: 700;
+				color: var(--very_dark_blue);
+				max-width: 3rem;
+				width: 100vw;
+			}
+
+			.card .quant input::-webkit-inner-spin-button {
+				-webkit-appearance: none;
+			}
+
+			.card .add_cart {
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				align-items: center;
+				gap: 1rem;
 				max-height: 2.5rem;
 				height: 100vh;
 				border-radius: 0.5rem;
 				width: 100%;
 				background-color: var(--orange);
 				color: var(--white);
+			}
+
+			.card .add_cart img {
+				max-width: 1rem;
+				width: 100vw;
+			}
+
+			.card .add_cart button {
+				outline: 0;
+				border: none;
+				max-height: 2.5rem;
+				height: 100vh;
+				border-radius: 0.5rem;
+				font-size: 14px;
+				font-weight: 700;
+				color: var(--white);
+				background-color: var(--orange);
 			}
 		</style>
 	</head>
@@ -282,8 +323,16 @@
 				</div>
 
 				<div class="card">
-					<button>0</button>
-					<button>Add to cart</button>
+					<div class="quant">
+						<img src="images/icon-minus.svg" alt="icon-minus.svg" />
+						<input type="number" />
+						<img src="images/icon-plus.svg" alt="icon-plus.svg" />
+					</div>
+
+					<div class="add_cart">
+						<img src="images/icon-cart-white.svg" alt="icon-cart.svg" />
+						<button>Add to cart</button>
+					</div>
 				</div>
 			</div>
 		</main>
@@ -292,5 +341,9 @@
 			Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
 			Coded by <a href="#">Your Name Here</a>.
 		</div> -->
+
+		<script>
+			// colocar 0 no input de número
+		</script>
 	</body>
 </html>

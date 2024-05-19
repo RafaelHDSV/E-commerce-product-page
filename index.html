@@ -134,6 +134,7 @@
 				border: none;
 				border-radius: 1rem;
 				height: 5rem;
+				transition: 0.1s all ease-in-out;
 			}
 
 			.thumbnails_img {
@@ -142,6 +143,11 @@
 				width: 5rem;
 				transition: 0.1s all ease-in-out;
 				cursor: pointer;
+			}
+
+			.thumbnails div:hover {
+				opacity: 0.5;
+				transform: scale(1.3);
 			}
 
 			.infos {
@@ -448,19 +454,6 @@
 					thumbnailImg[i].style.opacity = '.3';
 				}
 
-				// efeito hover com algumas alterações
-				if (`${thumbnailImg[i].src.slice(57, 72)}.jpg` != mainImg.src.slice(57)) {
-					thumbnailImg[i].addEventListener('mouseenter', () => {
-						thumbnailImg[i].style.transform = 'scale(1.3)';
-						thumbnailImg[i].style.opacity = '.5';
-					});
-
-					thumbnailImg[i].addEventListener('mouseleave', () => {
-						thumbnailImg[i].style.transform = 'scale(1)';
-						thumbnailImg[i].style.opacity = '1';
-					});
-				}
-
 				thumbnailImg[i].addEventListener('click', () => {
 					// retorna ao estado original todas as thumbanails
 					for (let i2 = 0; i2 < thumbnailImg.length; i2++) {
@@ -474,18 +467,17 @@
 					}
 
 					// função para identificação da thumbnail escolhida
-					if (mainImg.src.slice(57) == `${thumbnailImg[i].src.slice(57, 72)}.jpg`) {
-						thumbnailImgDiv[i].style.border = '2px solid var(--orange)';
-						thumbnailImg[i].style.opacity = '.3';
-					}
+					setInterval(() => {
+						if (mainImg.src.slice(57) == `${thumbnailImg[i].src.slice(57, 72)}.jpg`) {
+							thumbnailImgDiv[i].style.border = '2px solid var(--orange)';
+							thumbnailImg[i].style.opacity = '.3';
+						}
+					}, 100);
 				});
 			}
 
 			// função para testes
 			setInterval(() => {}, 1000);
-
-			// erros
-			// hover no thumbanail
 		</script>
 	</body>
 </html>

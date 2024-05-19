@@ -129,9 +129,18 @@
 				gap: 1.5rem;
 			}
 
-			.images .thumbnails img {
+			.images .thumbnails div {
+				padding: 0;
+				border: none;
+				border-radius: 1rem;
+				height: 5rem;
+			}
+
+			.thumbnails_img {
+				object-fit: cover;
 				border-radius: 1rem;
 				width: 5rem;
+				cursor: pointer;
 			}
 
 			.infos {
@@ -198,7 +207,6 @@
 				color: var(--grayish_blue);
 			}
 
-			/* PAREI NESSA PARTE AQUI */
 			.card {
 				display: flex;
 				flex-direction: row;
@@ -252,6 +260,7 @@
 				width: 100%;
 				background-color: var(--orange);
 				color: var(--white);
+				box-shadow: 0.5rem 0.5rem 0.7rem var(--orange);
 			}
 
 			.card .add_cart img {
@@ -297,22 +306,33 @@
 				<img class="main_img" src="images/image-product-1.jpg" alt="image-product-1.jpg" />
 
 				<div class="thumbnails">
-					<img
-						class="thumbnails_img"
-						src="images/image-product-1-thumbnail.jpg"
-						alt="image-product-1-thumbnail.jpg" />
-					<img
-						class="thumbnails_img"
-						src="images/image-product-2-thumbnail.jpg"
-						alt="image-product-2-thumbnail.jpg" />
-					<img
-						class="thumbnails_img"
-						src="images/image-product-3-thumbnail.jpg"
-						alt="image-product-3-thumbnail.jpg" />
-					<img
-						class="thumbnails_img"
-						src="images/image-product-4-thumbnail.jpg"
-						alt="image-product-4-thumbnail.jpg" />
+					<div>
+						<img
+							class="thumbnails_img"
+							src="images/image-product-1-thumbnail.jpg"
+							alt="image-product-1-thumbnail.jpg" />
+					</div>
+
+					<div>
+						<img
+							class="thumbnails_img"
+							src="images/image-product-2-thumbnail.jpg"
+							alt="image-product-2-thumbnail.jpg" />
+					</div>
+
+					<div>
+						<img
+							class="thumbnails_img"
+							src="images/image-product-3-thumbnail.jpg"
+							alt="image-product-3-thumbnail.jpg" />
+					</div>
+
+					<div>
+						<img
+							class="thumbnails_img"
+							src="images/image-product-4-thumbnail.jpg"
+							alt="image-product-4-thumbnail.jpg" />
+					</div>
 				</div>
 			</div>
 
@@ -359,6 +379,7 @@
 			// variaveis
 			mainImg = document.querySelector('.main_img');
 			thumbnailImg = document.querySelectorAll('.thumbnails_img');
+			thumbnailImgDiv = document.querySelectorAll('.thumbnails div');
 			quantCard = document.getElementById('num_card');
 			minus = document.getElementById('minus');
 			plus = document.getElementById('plus');
@@ -395,12 +416,33 @@
 			});
 
 			for (let i = 0; i < thumbnailImg.length; i++) {
+				// função para identificação da thumbnail escolhida
 				if (mainImg.src.slice(57) == `${thumbnailImg[i].src.slice(57, 72)}.jpg`) {
-					thumbnailImg[i].style.border = '10px solid var(--orange)';
+					thumbnailImgDiv[i].style.border = '2px solid var(--orange)';
 					thumbnailImg[i].style.opacity = '.3';
 				}
+
+				thumbnailImg[i].addEventListener('click', () => {
+					// retorna ao estado original todas as thumbanails
+					for (let i2 = 0; i2 < thumbnailImg.length; i2++) {
+						thumbnailImgDiv[i2].style.border = 'none';
+						thumbnailImg[i2].style.opacity = '1';
+					}
+
+					// alteração da imagem principal para a selecionada pela thumbnail
+					if (mainImg.src.slice(57) != `${thumbnailImg[i].src.slice(57, 72)}.jpg`) {
+						mainImg.src = `images/${thumbnailImg[i].src.slice(57, 72)}.jpg`;
+					}
+
+					// função para identificação da thumbnail escolhida
+					if (mainImg.src.slice(57) == `${thumbnailImg[i].src.slice(57, 72)}.jpg`) {
+						thumbnailImgDiv[i].style.border = '2px solid var(--orange)';
+						thumbnailImg[i].style.opacity = '.3';
+					}
+				});
 			}
 
+			// função para testes
 			setInterval(() => {}, 1000);
 		</script>
 	</body>

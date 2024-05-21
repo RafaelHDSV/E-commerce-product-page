@@ -186,6 +186,8 @@
 			.images .main_img {
 				border-radius: 1rem;
 				width: 25rem;
+				cursor: zoom-in;
+				transition: 0.1s all ease-in-out;
 			}
 
 			.images .thumbnails {
@@ -197,7 +199,8 @@
 				gap: 1.5rem;
 			}
 
-			.images .thumbnails div {
+			.images .thumbnails div,
+			.modal_images .thumbnails div {
 				padding: 0;
 				border: none;
 				border-radius: 1rem;
@@ -216,6 +219,60 @@
 			.thumbnails div:hover {
 				opacity: 0.5;
 				transform: scale(1.3);
+			}
+
+			.modal_images {
+				position: absolute;
+				top: 0;
+				left: 0;
+				display: none;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				width: 100%;
+				height: 130vh;
+				gap: 2rem;
+				background-color: hsla(0, 0%, 0%, 75%);
+			}
+
+			.close_modal {
+				position: absolute;
+				top: 7rem;
+				left: 54rem;
+				transition: 0.1s all ease-in-out;
+				cursor: pointer;
+			}
+
+			.previous {
+				position: absolute;
+				right: 53.7rem;
+				background-color: var(--white);
+				border-radius: 50%;
+				padding: 1rem;
+			}
+
+			.next {
+				position: absolute;
+				left: 53.7rem;
+				background-color: var(--white);
+				border-radius: 50%;
+				padding: 1rem;
+			}
+
+			.modal_images .main_img_modal {
+				border-radius: 1rem;
+				width: 30rem;
+				transition: 0.1s all ease-in-out;
+			}
+
+			.modal_images .thumbnails {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				align-items: center;
+				gap: 1rem;
+				max-width: 25rem;
+				width: 100%;
 			}
 
 			.infos {
@@ -382,6 +439,16 @@
 		</style>
 	</head>
 	<body>
+		<div class="modal_images">
+			<img class="close_modal" src="images/icon-close.svg" alt="icon-close.svg" />
+
+			<img class="previous" src="images/icon-previous.svg" alt="icon-previous.svg" />
+
+			<img class="main_img_modal" src="images/image-product-1.jpg" alt="image-product-1.jpg" />
+
+			<img class="next" src="images/icon-next.svg" alt="icon-next.svg" />
+		</div>
+
 		<nav>
 			<div class="left_container">
 				<h1>sneakers</h1>
@@ -490,13 +557,34 @@
 			// variaveis
 			cart = document.getElementById('cart');
 			modalCart = document.querySelector('.modal_cart');
-			mainImg = document.querySelector('.main_img');
+			mainImg = document.querySelector('.images .main_img');
 			thumbnailImg = document.querySelectorAll('.thumbnails_img');
 			thumbnailImgDiv = document.querySelectorAll('.thumbnails div');
 			quantCard = document.getElementById('num_card');
 			minus = document.getElementById('minus');
 			plus = document.getElementById('plus');
+			closeModal = document.querySelector('.close_modal');
+			modalImages = document.querySelector('.modal_images');
 
+			// abrir o modal das imagens
+			mainImg.addEventListener('click', () => {
+				modalImages.style.display = 'flex';
+			});
+
+			// fechar o modal das imagens
+			closeModal.addEventListener('click', () => {
+				modalImages.style.display = 'none';
+			});
+
+			// função hover no closeModal
+			closeModal.addEventListener('mouseenter', () => {
+				closeModal.src = 'images/icon-close-orange.svg';
+			});
+			closeModal.addEventListener('mouseout', () => {
+				closeModal.src = 'images/icon-close.svg';
+			});
+
+			// visualização do carrinho
 			cart.addEventListener('click', () => {
 				if (modalCart.style.display == 'flex') {
 					modalCart.style.display = 'none';
